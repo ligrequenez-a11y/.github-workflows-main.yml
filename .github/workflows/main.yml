@@ -2,7 +2,7 @@ name: CI/CD Docker Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "principal" ] # le ponemos principal par aque ciinicda  con repositorio
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -40,3 +40,8 @@ jobs:
         region: ${{ env.REGION }}
         image: us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/repo-docker/${{ env.SERVICE_NAME }}:${{ github.sha }}
         flags: '--allow-unauthenticated'
+        # Añado las variables de entorno para la base de datos aquí ene este :
+        env_vars: |
+          DB_HOST=${{ secrets.DB_HOST }}
+          DB_USER=postgres
+          DB_PASSWORD=${{ secrets.DB_PASSWORD }}
