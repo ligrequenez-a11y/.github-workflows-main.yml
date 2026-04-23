@@ -1,6 +1,6 @@
 # Usé una imagen ligera de Nginx
 FROM nginx:alpine
-
+# Actualización para activar el pipeline
 # Copie los archivos de tu proyecto al directorio que Nginx usa para servir contenido
 # Si tu código está en la raíz junto al Dockerfile, usamos "."
 COPY . /usr/share/nginx/html
